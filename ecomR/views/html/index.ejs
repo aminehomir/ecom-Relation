@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Sidebar 02</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		<link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+		</div>
+	
+
+				<div class="p-4 pt-5">
+		  		<h1><a href="index.html" class="logo">Home</a></h1>
+	        <ul class="list-unstyled components mb-5">
+            <li>
+              <a href="index.html"  ><i class="material-icons">&#xE147;</i> <span>Categorie</span></a>
+                  </li>
+	          <li class="active">
+	            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+	            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="#">Home 1</a>
+                </li>
+                <li>
+                    <a href="#">Home 2</a>
+                </li>
+                <li>
+                    <a href="#">Home 3</a>
+                </li>
+	            </ul>
+	          </li>
+	         
+	          <li>
+
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="#">Page 1</a>
+                </li>
+                <li>
+                    <a href="#">Page 2</a>
+                </li>
+                <li>
+                    <a href="#">Page 3</a>
+                </li>
+              </ul>
+	          </li>
+	          <li>
+              <a href="#">Portfolio</a>
+	          </li>
+	          <li>
+              <a href="#">Contact</a>
+	          </li>
+	        </ul>
+
+	        <div class="mb-5">
+						<h3 class="h6">Subscribe for newsletter</h3>
+						<form action="#" class="colorlib-subscribe-form">
+	            <div class="form-group d-flex">
+	            	<div class="icon"><span class="icon-paper-plane"></span></div>
+	              <input type="text" class="form-control" placeholder="Enter Email Address">
+	            </div>
+	          </form>
+					</div>
+
+	        <div class="footer">
+	        	<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+						  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+	        </div>
+
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="">
+		  
+		<div class="container">
+			<div class="table-wrapper">
+				<div class="table-title">
+					<div class="row">
+						<div class="col-sm-6">
+				<h2><b>Categories</b></h2>
+			  </div>
+			  <div class="col-sm-6">
+				<a href="#addcategory" class="btn btn-info" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>ajouter un categorie</span></a>
+									
+			  </div>
+					</div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+				
+							<th>nom de categorie</th>
+							<th></th>
+							<th></th>
+							
+							<th>action</th>
+							
+			  
+						</tr>
+					</thead>
+					<tbody>
+						<form method="POST" action="/category/update">
+							<% categorie.forEach(function(categorie){ %> 
+							<tr>
+								
+								<td> <%= categorie.nom %> </td>
+								<td></td>
+								<td></td>
+								
+							
+								   <td >
+									<!-- model btn edit  -->
+									<a type="button" href="/edit/<%= categorie.id %> " class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editC<%= categorie.id %>">
+										<i class="fa fa-edit ">edit</i>
+									</a>
+									<a type="button" href=" /delete/<%= categorie.id %>" class="btn btn-sm btn-danger">
+										<i class="fa fa-trash" aria-hidden="true">delete</i>
+										
+									</a>
+								</td>
+							
+									
+					 
+						
+								
+								  <!-- Modal Edit-->
+								  <div id="editC<%= categorie.id %>" class="modal fade">
+									<div class="modal-dialog">
+									  <div class="modal-content">
+										<form method="POST" action="/category/update">
+											<input type="hidden" name="id" value="<%= categorie.id %>">
+										  <div class="modal-header">						
+											<h4 class="modal-title">Edit Employee</h4>
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										  </div>
+										  <div class="modal-body">					
+											<div class="form-group">
+											  <label>Nom de prpduit</label>
+											  <input type="text"  name="nameupdate" value="<%= categorie.nom %>" class="form-control" required>
+											</div>
+										
+										
+										   
+										  <div class="modal-footer">
+											
+											<button type="submit" class="btn btn-info" >update</button>
+											
+										  </div>
+										</form>
+									
+									  </div>
+									</div>
+									</div>
+								  <div class="modal fade" id="editC<%= categorie.id %>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header bg-dark text-white">
+												<h5 class="modal-title">Update categorie</h5>
+												<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<form  action="/category/update" method="POST">
+												<input type="hidden" name="id" value="<%= categorie.id %>">
+												<div class="modal-body">                              
+													<div class="form-group">
+														<label for="name">categorie name</label>
+														<input 
+														type="text"
+														class="form-control input-lg"
+														name="nameupdate"
+														value="<%= categorie.nom %>">
+													</div>
+												 
+												</div>
+												<div class="modal-footer">
+													<button type="submit" class="btn btn-dark w-75 m-auto">Save</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								
+							 
+			
+							
+						   <% }); %> 
+						  </form>
+					
+						
+					</tbody>
+				
+				</table>
+		  
+			</div>
+		</div>
+
+		
+ 
+		<!-- Edit Modal HTML -->
+		<div id="addcategory" class="modal fade">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<form method="POST" action="/addC">
+			  <div class="modal-header">						
+				<h4 class="modal-title">ajouter une categorie</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			  </div>
+			  <div class="modal-body">	
+								
+				<div class="form-group">
+				  <label>Nom de categorie</label>
+				  <input type="text" name="nom" class="form-control" >
+				</div>
+			
+			  <div class="modal-footer">
+				<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+				
+				<button type="submit" class="btn btn-info" >add</button>
+			  </div>
+			</form>
+		  </div>
+		</div>
+		</div>
+
+
+		
+	
+		
+		
+       
+      </div>
+		</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
